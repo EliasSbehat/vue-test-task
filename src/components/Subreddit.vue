@@ -5,6 +5,7 @@
       sortField="subscribers"  :sortOrder="-1"
       v-model:filters="filters" filterDisplay="row"
       paginator :rows="50" :rowsPerPageOptions="[5, 10, 20, 50]"
+      tableStyle="min-width: 40rem"
     >
       <Column field="name" sortable header="Name"></Column>
       <Column field="subscribers" :sortable="true" header="Subscribers"></Column>
