@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <DataTable 
-      :value="Subreddit"
+      :value="data"
       sortField="subscribers"  :sortOrder="-1"
       v-model:filters="filters" filterDisplay="row"
       paginator :rows="50" :rowsPerPageOptions="[5, 10, 20, 50]"
@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { ref, onMounted } from 'vue'
   import DataTable from 'primevue/datatable'
   import InputText from 'primevue/inputtext';
 
@@ -30,6 +30,22 @@
   import { FilterMatchMode } from 'primevue/api';
 
   import { Subreddit } from "@/db.json";
+
+  interface dataType {
+    name: string;
+    subscribers: number;
+    verification: string;
+  }
+  const data = ref<dataType[]>([]);
+
+  // get the data from api endpoint
+  const getSubreddit = () => {
+    data.value = Subreddit;
+  }
+
+  onMounted(() => {
+    getSubreddit(); // call when initial load
+  });
 
   const filters = ref({
     verification: { value: null, matchMode: FilterMatchMode.CONTAINS },
