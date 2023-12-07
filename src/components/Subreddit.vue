@@ -2,7 +2,7 @@
   <div class="card">
     <DataTable 
       :value="Subreddit"
-      sortField="subscribers"  :sortOrder="1"
+      sortField="subscribers"  :sortOrder="-1"
       v-model:filters="filters" filterDisplay="row"
       paginator :rows="50" :rowsPerPageOptions="[5, 10, 20, 50]"
     >
