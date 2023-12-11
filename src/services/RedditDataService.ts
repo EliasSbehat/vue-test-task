@@ -2,7 +2,7 @@ import http from "../http-common";
 
 class RedditDataService {
   getAll() {
-    return http.get("/reddit/reddits");
+    return http.get("/reddits");
   }
 }
 
