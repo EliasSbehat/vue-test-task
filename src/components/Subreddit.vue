@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
   import { ref, onMounted } from 'vue'
-  import RedditDataService from "../services/RedditDataService";
+  import RedditDataService from "@/services/RedditDataService";
   import DataTable from 'primevue/datatable'
   import InputText from 'primevue/inputtext';
 
