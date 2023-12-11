@@ -23,13 +23,12 @@
 
 <script setup lang="ts">
   import { ref, onMounted } from 'vue'
+  import RedditDataService from "../services/RedditDataService";
   import DataTable from 'primevue/datatable'
   import InputText from 'primevue/inputtext';
 
   import Column from 'primevue/column'
   import { FilterMatchMode } from 'primevue/api';
-
-  import { Subreddit } from "@/db.json";
 
   interface dataType {
     name: string;
@@ -39,8 +38,14 @@
   const data = ref<dataType[]>([]);
 
   // get the data from api endpoint
-  const getSubreddit = () => {
-    data.value = Subreddit;
+  const getSubreddit = async () => {
+    RedditDataService.getAll()
+      .then(response => {
+        data.value = response.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   onMounted(() => {
